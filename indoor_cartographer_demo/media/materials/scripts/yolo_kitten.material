@@ -1,0 +1,17 @@
+material IndoorDemo/YoloKitten
+{
+  technique
+  {
+    pass
+    {
+      lighting off
+      cull_hardware none
+      cull_software none
+      texture_unit
+      {
+        texture yolo_kitten.png
+        filtering trilinear
+      }
+    }
+  }
+}
