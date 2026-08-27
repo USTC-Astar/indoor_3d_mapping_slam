@@ -2,6 +2,7 @@
 # Cartographer checkout or optional third-party planners beside it.
 /*
 !/.gitignore
+!/README.md
 !/indoor_cartographer_demo/
 !/indoor_cartographer_demo/**
 !/run_indoor_mapping_demo.sh
