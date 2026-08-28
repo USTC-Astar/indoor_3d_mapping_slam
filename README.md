@@ -17,22 +17,22 @@
 
 ```mermaid
 flowchart LR
-    G[Gazebo 室内场景] --> L2[二维激光 /scan]
-    G --> O[里程计 /odom]
-    G --> L3[三维点云 /block_laser_3d]
-    G --> C[相机 /robot_view/image_raw]
-    L2 --> CT[Cartographer 2D]
+    G["Gazebo 室内场景"] --> L2["二维激光 /scan"]
+    G --> O["里程计 /odom"]
+    G --> L3["三维点云 /block_laser_3d"]
+    G --> C["相机 /robot_view/image_raw"]
+    L2 --> CT["Cartographer 2D"]
     O --> CT
-    CT --> M[/map]
-    M --> E[自主前沿探索]
+    CT --> M["地图 /map"]
+    M --> E["自主前沿探索"]
     L2 --> E
-    E --> V[/cmd_vel]
+    E --> V["速度指令 /cmd_vel"]
     V --> G
-    L3 --> F[点云转换与动态目标过滤]
-    F --> OM[OctoMap]
-    OM --> O3[/octomap_binary]
-    C --> Y[YOLO 猫检测]
-    Y --> RV[RViz 视觉窗口]
+    L3 --> F["点云转换与动态目标过滤"]
+    F --> OM["OctoMap"]
+    OM --> O3["三维地图 /octomap_binary"]
+    C --> Y["YOLO 猫检测"]
+    Y --> RV["RViz 视觉窗口"]
 ```
 
 ## 仓库结构
