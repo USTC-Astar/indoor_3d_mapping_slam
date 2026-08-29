@@ -109,6 +109,10 @@ source ~/cartographer_ws/install_isolated/setup.bash
 rospack find cartographer_ros
 ```
 
+如果你已经把 Cartographer 放在本仓库旁边的
+`/home/rog/catkin_ws/src/Autonomous-exploration/terrestrial/cartographer_indoor_active_slam/ros_workspace`
+，启动脚本也会自动接上它。
+
 ## 运行
 
 克隆仓库：

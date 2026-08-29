@@ -102,13 +102,13 @@ Visualization Manager:
       Use Timestamp: false
       Value: false
     - Class: Submaps
-      Enabled: false
+      Enabled: true
       Name: Cartographer Submaps
       Submap query service: /submap_query
       Topic: /submap_list
       Tracking frame: base_link
       Unreliable: false
-      Value: false
+      Value: true
     - Class: rviz/MarkerArray
       Enabled: false
       Marker Topic: /trajectory_node_list
@@ -245,7 +245,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /robot_view/yolo/image_annotated
+      Image Topic: /robot_view/image_raw
       Max Value: 1
       Median window: 5
       Min Value: 0

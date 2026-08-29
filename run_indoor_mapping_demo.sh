@@ -3,7 +3,9 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+set +u
 source /opt/ros/noetic/setup.bash
+set -u
 
 for setup_file in \
   "$HOME/cartographer_ws/install_isolated/setup.bash" \
@@ -13,7 +15,9 @@ for setup_file in \
   "$HOME/cartographer_ws_v2/install_isolated/setup.bash" \
   "$HOME/cartographer_ws_v2/devel_isolated/setup.bash" \
   "$HOME/cartographer_ws_explorelite_stage/install_isolated/setup.bash" \
-  "$HOME/cartographer_ws_explorelite_stage/devel_isolated/setup.bash"; do
+  "$HOME/cartographer_ws_explorelite_stage/devel_isolated/setup.bash" \
+  "$SCRIPT_DIR/../cartographer_indoor_active_slam/ros_workspace/install_isolated/setup.bash" \
+  "$SCRIPT_DIR/../cartographer_indoor_active_slam/ros_workspace/devel_isolated/setup.bash"; do
   if [[ -f "$setup_file" ]]; then
     source "$setup_file"
   fi

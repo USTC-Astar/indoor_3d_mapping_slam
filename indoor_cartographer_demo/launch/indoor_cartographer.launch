@@ -15,7 +15,7 @@
   <arg name="rviz_config" default="$(eval 'indoor_mapping_3d.rviz' if arg('slam_mode') == '3d' else ('indoor_mapping_hybrid.rviz' if arg('slam_mode') == 'hybrid' else 'indoor_mapping.rviz'))" />
   <arg name="waypoints" default="$(eval '-4.4,-3.25;-3.2,-3.20;-1.0,-2.65;0.8,-1.35;2.6,-1.35;4.4,-1.20;4.65,-3.65;3.25,-3.65;4.65,-3.65;4.4,-1.20;4.0,0.45;3.9,1.35;4.1,2.20;3.45,3.55;4.1,2.20;3.9,1.35;3.8,-1.35;1.0,-1.35;0.2,0.4;0.2,1.35;1.55,2.0;1.55,3.65;1.55,2.0;0.2,1.35;0.2,0.4;-3.35,0.4;-3.4,1.45;-2.75,2.35;-2.75,3.65;-3.65,3.65;-2.75,2.35;-3.4,1.45;-3.4,0.35;-3.7,-1.8;-4.4,-3.25' if arg('scene') == 'quick' else '')" />
   <arg name="dynamic_obstacles" default="$(eval 'true' if arg('scene') == 'quick' else 'false')" />
-  <arg name="yolo_cat_detector" default="true" />
+  <arg name="yolo_cat_detector" default="false" />
   <arg name="yolo_model" default="$(env HOME)/falconbot/src/falconbot_perception/models/yolov8n.pt" />
   <arg name="yolo_confidence" default="0.25" />
   <arg name="kitten_speed" default="0.38" />
@@ -45,7 +45,8 @@
     <param name="input_topic" value="/odom" />
     <param name="output_topic" value="/cartographer/odom" />
     <param name="planarize" value="true" />
-    <param name="publish_tf" value="false" />
+    <!-- 需要补齐 odom -> base_footprint，Cartographer 只发布 map -> odom -->
+    <param name="publish_tf" value="true" />
     <param name="odom_frame" value="odom" />
     <param name="base_frame" value="base_footprint" />
   </node>

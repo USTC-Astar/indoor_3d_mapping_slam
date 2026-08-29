@@ -6,13 +6,17 @@ import threading
 
 import rospy
 import tf2_ros
-from cartographer_ros_msgs.srv import FinishTrajectory
 from gazebo_msgs.msg import ContactsState
 from geometry_msgs.msg import Point, PoseStamped, Twist
 from nav_msgs.msg import OccupancyGrid, Odometry, Path
 from sensor_msgs.msg import LaserScan
 from std_msgs.msg import Bool, String
 from visualization_msgs.msg import Marker, MarkerArray
+
+try:
+    from cartographer_ros_msgs.srv import FinishTrajectory
+except ImportError:
+    FinishTrajectory = None
 
 
 def clamp(value, low, high):
@@ -908,6 +912,10 @@ class ActiveSlamExplorer:
 
     def finish_cartographer_trajectory(self):
         if not self.finish_cartographer_on_complete or self.finish_trajectory_started:
+            return
+        if FinishTrajectory is None:
+            rospy.logwarn("cartographer_ros_msgs is not available; skip finish_trajectory.")
+            self.finish_trajectory_started = True
             return
         self.finish_trajectory_started = True
 

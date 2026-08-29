@@ -224,7 +224,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /robot_view/yolo/image_annotated
+      Image Topic: /robot_view/image_raw
       Max Value: 1
       Median window: 5
       Min Value: 0
